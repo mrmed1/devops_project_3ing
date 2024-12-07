@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const URI ='mongodb+srv://hendlegleg:hend12345@cluster0.fswjx.mongodb.net/database'
+const URI = process.env.MONGO_URI
 const client = new MongoClient(URI, {
   serverApi: {
     version: ServerApiVersion.v1,
