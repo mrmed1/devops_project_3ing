@@ -8,21 +8,21 @@ services:
       - "5173:5173"
     networks:
       - front-network
-  
+
   backend:
     build: ./backend
     depends_on:
-      - mongo
+      - mongodb
     ports:
       - 5050:5050
     environment:
-      MONGO_URI: mongodb://mongodb:mongodb@mongo:27017
+      MONGO_URI: mongodb://mongodb:27017/database
     networks:
       - back-network
       - front-network
-  
-  mongo:
-    image: mongo
+
+  mongodb:
+    image: mongo:4.4
     restart : always
     volumes:
       - mongodb_data:/data/db
@@ -31,6 +31,7 @@ services:
       MONGODB_INITDB_ROOT_PASSWORD: mongodb
     networks:
       - back-network
+
 
 networks:
   front-network:

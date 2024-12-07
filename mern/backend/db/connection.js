@@ -1,15 +1,12 @@
-import { MongoClient, ServerApiVersion } from "mongodb";
+import { MongoClient } from "mongodb";
 import dotenv from 'dotenv';
 
 dotenv.config();
 
-const URI = process.env.MONGO_URI
+const URI = process.env.MONGO_URI;
 const client = new MongoClient(URI, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  },
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 });
 
 async function connectToDatabase() {
